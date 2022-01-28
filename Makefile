@@ -26,3 +26,6 @@ docker_run:
 	docker run -it --rm ahermann/practical-mlops
 
 docker: docker_build docker_tag docker_login docker_push
+
+load_test:
+	locust -f locustfile.py --host http://127.0.0.1:8000 --headless -u 100 -r 10 --run-time 10m
